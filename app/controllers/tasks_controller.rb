@@ -2,6 +2,7 @@ require_relative '../models/task.rb'
 # require_relative '../views/view_task.rb'
 
 class TasksController
+  include View
 
   def self.proccess_command(command, option = nil)
     option.nil? ? self.send(command) : self.send(command, option)
@@ -13,7 +14,10 @@ class TasksController
   end
 
   def self.list
-    Task.list
+    Task.list.each_with_index do |task, index|
+      display_text(index, task.content, task.complete, task.id)
+    end
+
   end
 
   def self.delete(id)
