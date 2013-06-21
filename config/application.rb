@@ -3,6 +3,7 @@ require 'sqlite3'
 require 'active_record'
 require 'logger'
 require 'faker'
+require_relative '../app/controllers/tasks_controller.rb'
 
 APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
